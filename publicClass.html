@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs</title>
+</head>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<body>
+<div id="appName">
+    <p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
+
+    <p> {{ name }}</p>
+    <p>{{ age * 3 }}</p>
+    <p>{{ random()}}</p>
+    <div>
+        <img v-bind:src="image" style="width: 500px;height: 500px;"/>
+
+    </div>
+    <div>
+        <button v-on:click="increase(3, $event)">Click me</button>
+        <p>{{count}}</p>
+    </div>
+    <div>
+        <p v-on:mousemove="updateCoordinate">Coordinates: {{x}} / {{y}}</p>
+    </div>
+
+</div>
+<script type="text/javascript">
+
+    new Vue({
+        el: '#appName',
+        data: {
+            name: 'liguanyong',
+            age: '18',
+            link: 'www.google.com',
+            image: 'https://img.gq.com.tw/_rs/645/userfiles/sm/sm1024_images_A1/38223/2018122447696957.jpg',
+            count: 0,
+            x: 0,
+            y: 0
+        },
+        methods: {
+            sayHello: function () {
+                return 'www.upsplash.com';
+            },
+            random: function () {
+                return Math.random();
+            },
+            increase: function (step ,event) {
+                this.count += step;
+            },
+            updateCoordinate: function (event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            }
+        }
+    })
+</script>
+</body>
+</html>
